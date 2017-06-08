@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LocateSecurly</string>
+    <string name="location_tracking">Location Tracking</string>
+    <string name="history"><u>History</u></string>
+    <string name="ok">Okay</string>
+    <string name="cancel">Cancel</string>permission_message
+    <string name="permission_message">Please allow permissions to this application.</string>
+    <string name="permissions_denied">Error! Permissions denied.</string>
+    <string name="session_details">Session Details</string>
+    <string name="session_history">Session History</string>
+    <string name="no_session_captured">No Session Captured</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="dlg_wait_please">Please wait..</string>
+</resources>
