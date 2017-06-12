@@ -5,7 +5,7 @@ import android.app.Application;
 import com.djay.locatesecurly.utils.CoreSharedHelper;
 
 /**
- * Application class extends @{@link Application}
+ * Application class extends {@link Application}
  *
  * @author Dhananjay Kumar
  */
