@@ -1,32 +1,3 @@
-/*
-' History Header:      Version         - Date        - Developer Name   - Work Description
-' History       :        1.0           - May-2016    - Dhananjay Kumar  - service class to perform notification calls
- */
-
-/*
- ##############################################################################################
- #####                                                                                    #####
-
- #####     FILE              : AutoSyncService.Java 	                   				  #####
- #####     CREATED BY        : Dhananjay Kumar                                            #####        
- #####     CREATION DATE     : May-2016                                                   #####
- #####                                                                                    #####
-
- #####     MODIFIED  BY      : Dhananjay Kumar                                            #####          
- #####     MODIFIED ON       :                                                   		  #####
-
- #####                                                                                    #####
-
- #####     CODE BRIEFING     : AutoSyncService Class.                    		   		  #####
- #####                         A service class which performs Sync calls  				  #####
- #####					       separate from UI thread	                      		      #####
- #####                                                                                    #####
-
- #####     COMPANY           : SpotOn Software Pvt. Ltd.                                  #####                
- #####                                                                                    #####
-
- ##############################################################################################
- */
 package com.djay.locatesecurly.services;
 
 import android.app.AlarmManager;
