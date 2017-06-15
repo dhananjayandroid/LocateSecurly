@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.djay.locatesecurly.R;
 import com.djay.locatesecurly.models.Session;
 import com.djay.locatesecurly.services.BackgroundLocationService;
+import com.djay.locatesecurly.services.BackgroundRecordService;
 import com.djay.locatesecurly.utils.CoreSharedHelper;
 import com.djay.locatesecurly.utils.LocationUtils;
 
@@ -30,6 +31,10 @@ public class MainActivity extends BaseActivity {
     Switch swLocate;
     @BindView(R.id.tv_history)
     TextView tvHistory;
+    @BindView(R.id.sw_track)
+    Switch swTrack;
+    @BindView(R.id.tv_record_history)
+    TextView tvRecordHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,9 @@ public class MainActivity extends BaseActivity {
         if (checkSessionRunning()) {
             swLocate.setChecked(true);
         }
+        if (checkAudioTrackRunning()) {
+            swTrack.setChecked(true);
+        }
     }
 
     /**
@@ -57,6 +65,15 @@ public class MainActivity extends BaseActivity {
         return CoreSharedHelper.getInstance().getSessionId() != null;
     }
 
+    /**
+     * Check if audio tracking is already running
+     *
+     * @return true if audio tracking  is running
+     */
+    private boolean checkAudioTrackRunning() {
+        return CoreSharedHelper.getInstance().getAudioTrackId() != null;
+    }
+
     @OnCheckedChanged(R.id.sw_locate)
     void onCheckChange(boolean check) {
         if (check) {
@@ -66,9 +83,51 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @OnCheckedChanged(R.id.sw_track)
+    void onAudioTrackCheckChange(boolean check) {
+        if (check) {
+            startAudioTracking();
+        } else {
+            stopAudioTracking();
+        }
+    }
+
+    /**
+     * Stops Audio Tracking
+     */
+    private void stopAudioTracking() {
+        if (checkAudioTrackRunning()) {
+            CoreSharedHelper.getInstance().clearAudioTrackId();
+            Intent syncServiceIntent = new Intent(this, BackgroundRecordService.class);
+            syncServiceIntent.setAction(BackgroundRecordService.ACTION_CANCEL);
+            startService(syncServiceIntent);
+        }
+    }
+
+    /**
+     * Starts Audio Tracking
+     */
+    private void startAudioTracking() {
+        if (!permissionHelper.isAllPermissionAvailable()) {
+            swLocate.setChecked(false);
+            permissionHelper.setActivity(this);
+            permissionHelper.requestPermissionsIfDenied();
+            return;
+        }
+        if (!checkAudioTrackRunning()) {
+            CoreSharedHelper.getInstance().saveAudioTrackId("" + UUID.randomUUID());
+            startService(new Intent(this, BackgroundRecordService.class));
+        }
+    }
+
     @OnClick(R.id.tv_history)
     void onHistoryClick() {
         SessionsListActivity.start(this);
+    }
+
+    @OnClick(R.id.tv_record_history)
+    void onAudioHistoryClick() {
+        AudioListActivity.start(this);
     }
 
     /**

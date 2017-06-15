@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.djay.locatesecurly.utils.Constants;
+import com.djay.locatesecurly.utils.CoreSharedHelper;
 
 /**
  * BroadcastReceiver class for start {@link BackgroundLocationService} on device reboot
@@ -43,7 +44,15 @@ public class LocationLoggerServiceManager extends BroadcastReceiver {
                     Log.d(TAG, "Could not start service " + comp.toString());
                 }
             }
-
+            ComponentName comp = new ComponentName(context.getPackageName(), BackgroundRecordService.class
+                    .getName());
+            if (new CoreSharedHelper(context).getAudioTrackId() != null) {
+                ComponentName service = context.startService(new Intent().setComponent(comp));
+                if (null == service) {
+                    // something really wrong here
+                    Log.d(TAG, "Could not start service " + comp.toString());
+                }
+            }
         } else {
             Log.d(TAG, "Received unexpected intent " + intent.toString());
         }

@@ -14,15 +14,16 @@ import com.djay.locatesecurly.R;
 import java.util.ArrayList;
 
 /**
- * Helper class for acquire run-time permission
+ * Helper class to acquire run-time permission
  *
  * @author Dhananjay Kumar
  */
 public class PermissionHelper {
     private static final int PERMISSION_REQUEST_CODE = 1;
+    private static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+    private static final String PERMISSION_MIC = Manifest.permission.RECORD_AUDIO;
     private static final String PERMISSION_ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String PERMISSION_ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-    //  public static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     @SuppressLint("StaticFieldLeak")
     private static PermissionHelper permissionHelper;
     private Activity activity;
@@ -44,6 +45,8 @@ public class PermissionHelper {
         requiredPermissions = new ArrayList<>();
         requiredPermissions.add(PERMISSION_ACCESS_FINE_LOCATION);
         requiredPermissions.add(PERMISSION_ACCESS_COARSE_LOCATION);
+        requiredPermissions.add(PERMISSION_WRITE_EXTERNAL_STORAGE);
+        requiredPermissions.add(PERMISSION_MIC);
     }
 
     public void requestPermissionsIfDenied() {

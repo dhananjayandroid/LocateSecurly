@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
@@ -39,11 +40,23 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
+            android:name=".ui.AudioListActivity"
+            android:label="@string/record_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
 
         <service
             android:name=".services.BackgroundLocationService"
             android:enabled="true">
         </service>
+        <service
+            android:name=".services.BackgroundRecordService"
+            android:process=":voiceTrack"
+            android:enabled="true">
+        </service>
+
         <receiver
             android:name=".services.LocationLoggerServiceManager"
             android:enabled="true"

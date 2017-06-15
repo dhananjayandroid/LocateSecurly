@@ -71,10 +71,23 @@ public class CoreSharedHelper {
         savePref(Constants.SESSION_ID, null);
     }
 
+    public String getAudioTrackId() {
+        return getPref(Constants.AUDIO_TRACK_ID, null);
+    }
+
+    public void saveAudioTrackId(String id) {
+        savePref(Constants.AUDIO_TRACK_ID, id);
+    }
+
+    public void clearAudioTrackId() {
+        savePref(Constants.AUDIO_TRACK_ID, null);
+    }
+
     private class Constants {
         private static final String NAME = "LocateSecurly";
 
         private static final String SESSION_ID = "session_id";
+        private static final String AUDIO_TRACK_ID = "audio_track_id";
     }
 
 }

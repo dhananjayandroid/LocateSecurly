@@ -9,7 +9,10 @@
     <string name="session_details">Session Details</string>
     <string name="session_history">Session History</string>
     <string name="no_session_captured">No Session Captured</string>
+    <string name="no_audio_captured">No Audio Captured</string>
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="dlg_wait_please">Please wait..</string>
+    <string name="voice_tracking">Voice Tracking</string>
+    <string name="record_list">Record List</string>
 </resources>
