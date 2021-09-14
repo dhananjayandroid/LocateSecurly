@@ -1,6 +1,6 @@
 package com.djay.locatesecurly.ui.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,11 +61,12 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.MyVi
     private ArrayList<File> getListFiles(File parentDir) {
         File[] files = parentDir.listFiles();
         ArrayList<File> inFiles = new ArrayList<>();
-        for (File file : files) {
-            if (!file.isDirectory()) {
-                inFiles.add(file);
+        if (files != null)
+            for (File file : files) {
+                if (!file.isDirectory()) {
+                    inFiles.add(file);
+                }
             }
-        }
         return inFiles;
     }
 

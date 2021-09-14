@@ -1,6 +1,6 @@
 package com.djay.locatesecurly.ui.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import com.djay.locatesecurly.utils.listeners.RecyclerViewItemClickListener;
 import java.util.ArrayList;
 
 /**
- * Adapter class for sessions list extends {@link android.support.v7.widget.RecyclerView.Adapter}
+ * Adapter class for sessions list extends {@link RecyclerView.Adapter}
  *
  * @author Dhananjay Kumar
  */
@@ -54,7 +54,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
     }
 
     /**
-     * View holder class for recycler view row extends {@link android.support.v7.widget.RecyclerView.ViewHolder} and
+     * View holder class for recycler view row extends {@link RecyclerView.ViewHolder} and
      * implements {@link android.view.View.OnClickListener}
      */
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
